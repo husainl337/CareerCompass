@@ -1,6 +1,52 @@
 # CareerCompass
 AI-powered career recommendation engine with personalized feedback system to guide your professional journey.
 
+1. **User Registration and Quiz**
+2. **Machine Learning Prediction**
+3. **Sentiment Analysis (NLP)**
+4. **Chatbot Assistant**
+5. **Voice Assistant**
+
+## Features
+
+1. **User Registration and Quiz**
+   - After successful registration, the user is redirected to the quiz page.
+   - The user answers 19 quizzes.
+   - The user is automatically redirected to the prediction page to see their career job role based on their answers.
+
+2. **Machine Learning Prediction**
+   - The prediction is made using a machine learning model.
+   - The model suggests a career path for the user based on their quiz answers.
+
+3. **Sentiment Analysis**
+   - If the user is not satisfied with the prediction, they can provide feedback.
+   - An NLP model predicts whether the feedback is positive or negative using the NLTK library.
+   - The sentiment (positive or negative) is displayed to the user.
+
+4. **Chatbot and Voice Bot**
+   - The chatbot responds to custom data queries.
+   - Implemented using Google Gemini API, LangChain, and FAISS as the Vector-DB.
+   - Google Gemini is used for word embeddings.
+   - The voice bot is implemented with the React Speech Recognition library, FAISS DB, LangChain, and Gemini.
+
+## Technologies Used
+
+- **Frontend:**
+  - React
+  - React Speech Recognition
+
+- **Backend:**
+  - Django
+  - DRF
+  - NLTK
+  - LangChain
+  - FAISS
+  - Google Gemini API
+
+- **Database:**
+  - FAISS (Vector-DB)
+  - SQL
+
 ## Installation
 
 ### Prerequisites
@@ -54,3 +100,15 @@ AI-powered career recommendation engine with personalized feedback system to gui
     ```bash
     npm run dev
     ```
+
+## Usage
+
+1. Open your browser and navigate to `http://localhost:5173`.
+2. Register as a new user.
+3. Complete the quiz to receive a career path recommendation.
+4. Provide feedback on the prediction to see the sentiment analysis.
+5. Use the chatbot for custom queries.
+6. Interact with the voice bot for voice commands.
+
+
+
