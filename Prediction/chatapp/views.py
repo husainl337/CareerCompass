@@ -26,7 +26,19 @@ load_dotenv()
 API_KEY = os.environ.get("GOOGLE_API_KEY")
 if not API_KEY:
     raise ValueError("GOOGLE_API_KEY environment variable is not set. Please set it in your .env file")
-genai.configure(api_key = API_KEY)
+
+# Configure the API
+genai.configure(api_key=API_KEY)
+
+# Verify API key and model access
+try:
+    # List available models
+    print("Available models:")
+    for m in genai.list_models():
+        print(f"Model: {m.name}")
+        print(f"Supported methods: {m.supported_generation_methods}")
+except Exception as e:
+    print(f"Error listing models: {e}")
 
 
 
@@ -73,7 +85,6 @@ class ChatbotResponse() :
 
     ## Get the Conversation
     def get_conversational_chain():
-
         prompt_template = """
         Answer the question as detailed as possible from the provided context, make sure to provide all the details, if the answer is not in
         provided context just say, "answer is not available in the context", don't provide the wrong answer\n\n
@@ -83,12 +94,18 @@ class ChatbotResponse() :
         Answer:
         """
 
-        model = ChatGoogleGenerativeAI(model="gemini-pro",temperature=0.3)
+        try:
+            model = ChatGoogleGenerativeAI(
+                model="gemini-1.5-pro",  # Using the available model
+                temperature=0.3,
+                google_api_key=API_KEY
+            )
+        except Exception as e:
+            print(f"Error creating model: {e}")
+            raise
 
-        prompt = PromptTemplate(template = prompt_template, input_variables = ["context", "question"])
-
+        prompt = PromptTemplate(template=prompt_template, input_variables=["context", "question"])
         chain = load_qa_chain(model, chain_type="stuff", prompt=prompt)
-
         return chain
 
 
