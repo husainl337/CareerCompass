@@ -61,7 +61,7 @@ AI-powered career recommendation engine with personalized feedback system to gui
 1. Clone the repository:
     ```bash
     git clone https://github.com/husainl337/CareerCompass.git
-    cd career-path-recommendation-system/prediction
+    cd CareerCompass/prediction
     ```
 
 2. Create a virtual environment and activate it:
